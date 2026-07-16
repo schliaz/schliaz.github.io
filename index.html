@@ -1,70 +1,1251 @@
-<!DOCTYPE html>
-<html lang="en"> 
+<!doctype html>
+<html lang="id">
 <head>
-<link rel="stylesheet" href="boilerplate.css">
-<link rel="stylesheet" href="page.css">
-<script src="https://use.fontawesome.com/0847995977.js"></script>
-<meta charset="utf-8">
-<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0">
-  <title>Schliaz - Link in Bio & Donation</title>
-  <link rel="icon" type="x-icon" href="/images/profile.png">
-  <link rel="shortcut icon" type="x-icon" href="profile.png">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3304333348559089"
-     crossorigin="anonymous"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070b16" />
+  <link rel="canonical" href="https://schliaz.my.id/" />
+  <meta property="og:title" content="Schliaz — Link in Bio & Donation" />
+  <meta property="og:description" content="Gaming creator, streamer, dan digital adventurer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://schliaz.my.id/" />
+  <meta property="og:image" content="https://schliaz.my.id/logo.png" />
+
+  <title>Schliaz — Link in Bio & Donation</title>
+  <meta
+    name="description"
+    content="Link resmi Schliaz — gaming creator, streamer, dan content creator."
+  />
+
+  <!-- Font dapat diganti atau dihapus bila ingin tanpa koneksi eksternal. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Rajdhani:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #050713;
+      --panel: rgba(8, 12, 28, 0.78);
+      --panel-strong: rgba(10, 15, 34, 0.94);
+      --text: #f7f9ff;
+      --muted: #9aa5bd;
+      --cyan: #3cf7ff;
+      --purple: #8b5cff;
+      --pink: #ff4fd8;
+      --line: rgba(124, 153, 255, 0.22);
+      --radius: 24px;
+      --shadow: 0 24px 90px rgba(0, 0, 0, 0.48);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      font-family: "Rajdhani", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at var(--pointer-x, 50%) var(--pointer-y, 20%),
+          rgba(60, 247, 255, 0.12), transparent 25rem),
+        radial-gradient(circle at 20% 15%, rgba(139, 92, 255, 0.18), transparent 28rem),
+        radial-gradient(circle at 85% 80%, rgba(255, 79, 216, 0.13), transparent 30rem),
+        linear-gradient(145deg, #03040b 0%, #070b19 52%, #090518 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(60, 247, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(60, 247, 255, 0.12) 1px, transparent 1px);
+      background-size: 54px 54px;
+      transform: perspective(650px) rotateX(64deg) scale(1.65) translateY(19%);
+      transform-origin: center bottom;
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 34%, #000 100%);
+      animation: gridMove 16s linear infinite;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      opacity: 0.035;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 3px,
+        #ffffff 4px
+      );
+    }
+
+    .ambient {
+      position: fixed;
+      z-index: -2;
+      border-radius: 999px;
+      filter: blur(18px);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .ambient.one {
+      top: 8%;
+      left: -90px;
+      width: 230px;
+      height: 230px;
+      background: rgba(139, 92, 255, 0.24);
+      animation: driftOne 11s ease-in-out infinite alternate;
+    }
+
+    .ambient.two {
+      right: -100px;
+      bottom: 10%;
+      width: 270px;
+      height: 270px;
+      background: rgba(60, 247, 255, 0.17);
+      animation: driftTwo 13s ease-in-out infinite alternate;
+    }
+
+    .page-shell {
+      width: min(100%, 760px);
+      margin-inline: auto;
+      padding: 48px 20px 42px;
+    }
+
+    .profile-card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: clamp(26px, 5vw, 44px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent 35%),
+        var(--panel);
+      box-shadow:
+        var(--shadow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        125deg,
+        rgba(60, 247, 255, 0.75),
+        rgba(139, 92, 255, 0.1) 38%,
+        rgba(255, 79, 216, 0.48)
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .profile-card::after {
+      content: "SCHLIAZ";
+      position: absolute;
+      z-index: -1;
+      right: -32px;
+      bottom: -35px;
+      color: rgba(255, 255, 255, 0.025);
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(4.4rem, 16vw, 9rem);
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      transform: rotate(-7deg);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid rgba(60, 247, 255, 0.24);
+      border-radius: 999px;
+      color: #d8fdff;
+      background: rgba(60, 247, 255, 0.06);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #5dff9a;
+      box-shadow: 0 0 0 5px rgba(93, 255, 154, 0.09), 0 0 14px #5dff9a;
+      animation: pulse 1.9s ease-in-out infinite;
+    }
+
+    .top-tag {
+      color: var(--muted);
+      font-size: 0.83rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      display: grid;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .avatar-ring {
+      position: relative;
+      width: 132px;
+      height: 132px;
+      padding: 3px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        var(--cyan),
+        var(--purple),
+        var(--pink),
+        var(--cyan)
+      );
+      box-shadow:
+        0 0 30px rgba(60, 247, 255, 0.28),
+        0 0 62px rgba(139, 92, 255, 0.22);
+      animation: floatAvatar 4.5s ease-in-out infinite;
+    }
+
+    .avatar-ring::after {
+      content: "";
+      position: absolute;
+      inset: -13px;
+      border: 1px solid rgba(60, 247, 255, 0.16);
+      border-radius: inherit;
+      animation: ringPulse 2.8s ease-out infinite;
+    }
+
+    .avatar {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: 7px solid #080b17;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.14), transparent 26%),
+        linear-gradient(145deg, #151a31, #080a13);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-fallback {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      font-family: "Orbitron", sans-serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #fff;
+      text-shadow:
+        2px 0 var(--pink),
+        -2px 0 var(--cyan),
+        0 0 22px rgba(60, 247, 255, 0.42);
+    }
+
+    .brand {
+      position: relative;
+      margin: 23px 0 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2rem, 7vw, 3.25rem);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-shadow:
+        2px 0 0 rgba(255, 79, 216, 0.65),
+        -2px 0 0 rgba(60, 247, 255, 0.65),
+        0 0 24px rgba(139, 92, 255, 0.28);
+    }
+
+    .brand::before,
+    .brand::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .brand:hover::before {
+      color: var(--cyan);
+      transform: translate(-2px, 1px);
+      clip-path: inset(0 0 55% 0);
+      animation: glitch 360ms steps(2, jump-none) both;
+      opacity: 0.55;
+    }
+
+    .brand:hover::after {
+      color: var(--pink);
+      transform: translate(2px, -1px);
+      clip-path: inset(48% 0 0 0);
+      animation: glitch 320ms steps(2, jump-none) reverse both;
+      opacity: 0.55;
+    }
+
+    .tagline {
+      max-width: 480px;
+      margin: 12px 0 0;
+      color: #c7cfe1;
+      font-size: clamp(1rem, 3.5vw, 1.15rem);
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    .email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 180ms ease;
+    }
+
+    .email:hover {
+      color: var(--cyan);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .chip {
+      padding: 7px 11px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      color: #c5cde0;
+      background: rgba(255, 255, 255, 0.035);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      height: 1px;
+      margin: 32px 0 28px;
+      border: 0;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(60, 247, 255, 0.35),
+        rgba(139, 92, 255, 0.4),
+        transparent
+      );
+    }
+
+    .section + .section {
+      margin-top: 30px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 13px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .section-heading span {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .game-link {
+      --accent: var(--cyan);
+      --accent-rgb: 60, 247, 255;
+
+      position: relative;
+      display: grid;
+      grid-template-columns: 46px minmax(0, 1fr) 28px;
+      align-items: center;
+      gap: 12px;
+      min-height: 66px;
+      padding: 10px 16px 10px 10px;
+      overflow: hidden;
+      border: 1px solid rgba(var(--accent-rgb), 0.24);
+      border-radius: 17px;
+      color: var(--text);
+      background:
+        linear-gradient(90deg, rgba(var(--accent-rgb), 0.08), transparent 48%),
+        var(--panel-strong);
+      text-decoration: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+    }
+
+    .game-link::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        transparent 22%,
+        rgba(255, 255, 255, 0.09) 45%,
+        transparent 68%
+      );
+      transform: translateX(-120%);
+      transition: transform 540ms ease;
+    }
+
+    .game-link:hover {
+      transform: translateY(-3px) scale(1.008);
+      border-color: rgba(var(--accent-rgb), 0.65);
+      background:
+        linear-gradient(90deg, rgba(var(--accent-rgb), 0.14), transparent 56%),
+        var(--panel-strong);
+      box-shadow:
+        0 12px 36px rgba(0, 0, 0, 0.26),
+        0 0 24px rgba(var(--accent-rgb), 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .game-link:hover::before {
+      transform: translateX(120%);
+    }
+
+    .game-link:focus-visible {
+      outline: 3px solid rgba(var(--accent-rgb), 0.36);
+      outline-offset: 3px;
+    }
+
+    .link-icon {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(var(--accent-rgb), 0.27);
+      border-radius: 13px;
+      color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.09);
+      box-shadow: inset 0 0 18px rgba(var(--accent-rgb), 0.05);
+    }
+
+    .link-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .link-icon .filled {
+      fill: currentColor;
+      stroke: none;
+    }
+
+    .link-copy {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+    }
+
+    .link-copy strong {
+      display: block;
+      overflow: hidden;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.91rem;
+      font-weight: 700;
+      letter-spacing: 0.045em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .link-copy small {
+      display: block;
+      margin-top: 4px;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .arrow {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      color: var(--accent);
+      transition: transform 180ms ease;
+    }
+
+    .game-link:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    .support {
+      --accent: var(--pink);
+      --accent-rgb: 255, 79, 216;
+      min-height: 72px;
+      background:
+        radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.11), transparent 9rem),
+        linear-gradient(100deg, rgba(255, 79, 216, 0.18), rgba(139, 92, 255, 0.12)),
+        var(--panel-strong);
+    }
+
+    .youtube {
+      --accent: #ff5d63;
+      --accent-rgb: 255, 93, 99;
+    }
+
+    .tiktok {
+      --accent: #54f7ee;
+      --accent-rgb: 84, 247, 238;
+    }
+
+    .instagram {
+      --accent: #ff65c8;
+      --accent-rgb: 255, 101, 200;
+    }
+
+    .facebook {
+      --accent: #66a7ff;
+      --accent-rgb: 102, 167, 255;
+    }
+
+    .twitch {
+      --accent: #ad7cff;
+      --accent-rgb: 173, 124, 255;
+    }
+
+    .bilibili {
+      --accent: #55c8ff;
+      --accent-rgb: 85, 200, 255;
+    }
+
+    footer {
+      padding: 22px 8px 4px;
+      color: #79839a;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    footer span {
+      color: var(--cyan);
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: 0.55;
+        transform: scale(0.86);
+      }
+    }
+
+    @keyframes ringPulse {
+      0% {
+        opacity: 0.72;
+        transform: scale(0.9);
+      }
+      70%,
+      100% {
+        opacity: 0;
+        transform: scale(1.12);
+      }
+    }
+
+    @keyframes floatAvatar {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    @keyframes gridMove {
+      from {
+        background-position: 0 0, 0 0;
+      }
+      to {
+        background-position: 0 54px, 54px 0;
+      }
+    }
+
+    @keyframes driftOne {
+      to {
+        transform: translate(40px, 55px) scale(1.16);
+      }
+    }
+
+    @keyframes driftTwo {
+      to {
+        transform: translate(-46px, -58px) scale(0.9);
+      }
+    }
+
+    @keyframes glitch {
+      0% {
+        transform: translate(0);
+      }
+      35% {
+        transform: translate(-4px, 2px);
+      }
+      70% {
+        transform: translate(4px, -2px);
+      }
+      100% {
+        transform: translate(0);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page-shell {
+        padding: 18px 12px 26px;
+      }
+
+      .profile-card {
+        padding: 22px 15px 28px;
+        border-radius: 20px;
+      }
+
+      .topbar {
+        margin-bottom: 22px;
+      }
+
+      .top-tag {
+        display: none;
+      }
+
+      .avatar-ring {
+        width: 116px;
+        height: 116px;
+      }
+
+      .section-heading {
+        align-items: center;
+      }
+
+      .section-heading span {
+        display: none;
+      }
+
+      .game-link {
+        grid-template-columns: 44px minmax(0, 1fr) 24px;
+        padding-right: 12px;
+      }
+
+      .link-icon {
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ===== Gaming Loading Screen ===== */
+    .game-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(60, 247, 255, 0.12), transparent 24rem),
+        radial-gradient(circle at 35% 70%, rgba(139, 92, 255, 0.14), transparent 25rem),
+        #03050d;
+      transition:
+        opacity 650ms ease,
+        visibility 650ms ease;
+    }
+
+    .game-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-grid {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .loader-grid::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background-image:
+        linear-gradient(rgba(60, 247, 255, 0.13) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(60, 247, 255, 0.13) 1px, transparent 1px);
+      background-size: 42px 42px;
+      transform: perspective(560px) rotateX(68deg) translateY(22%);
+      transform-origin: center bottom;
+      animation: loaderGridMove 2.6s linear infinite;
+    }
+
+    .loader-panel {
+      position: relative;
+      width: min(88vw, 430px);
+      padding: 34px 28px 28px;
+      border: 1px solid rgba(60, 247, 255, 0.28);
+      border-radius: 22px;
+      overflow: hidden;
+      text-align: center;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent 34%),
+        rgba(6, 10, 24, 0.9);
+      box-shadow:
+        0 0 50px rgba(60, 247, 255, 0.08),
+        0 20px 80px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .loader-panel::before,
+    .loader-panel::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan));
+      box-shadow: 0 0 14px rgba(60, 247, 255, 0.8);
+    }
+
+    .loader-panel::before {
+      top: 0;
+      left: 18px;
+    }
+
+    .loader-panel::after {
+      right: 18px;
+      bottom: 0;
+      transform: rotate(180deg);
+    }
+
+    .loader-emblem {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      color: white;
+      font-family: "Orbitron", sans-serif;
+      font-size: 2.3rem;
+      font-weight: 800;
+      background: #070b18;
+      box-shadow:
+        0 0 26px rgba(60, 247, 255, 0.24),
+        0 0 44px rgba(139, 92, 255, 0.18);
+    }
+
+    .loader-emblem::before,
+    .loader-emblem::after {
+      content: "";
+      position: absolute;
+      border-radius: inherit;
+      border: 2px solid transparent;
+    }
+
+    .loader-emblem::before {
+      inset: -8px;
+      border-top-color: var(--cyan);
+      border-right-color: var(--purple);
+      animation: loaderSpin 1.25s linear infinite;
+    }
+
+    .loader-emblem::after {
+      inset: -16px;
+      border-bottom-color: var(--pink);
+      border-left-color: rgba(60, 247, 255, 0.45);
+      animation: loaderSpinReverse 1.8s linear infinite;
+    }
+
+    .loader-title {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.2rem, 5vw, 1.7rem);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-shadow:
+        2px 0 rgba(255, 79, 216, 0.5),
+        -2px 0 rgba(60, 247, 255, 0.5);
+    }
+
+    .loader-subtitle {
+      margin: 9px 0 20px;
+      color: #95a0b9;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .loader-track {
+      position: relative;
+      height: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(60, 247, 255, 0.2);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.45);
+    }
+
+    .loader-progress {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+      box-shadow:
+        0 0 14px rgba(60, 247, 255, 0.6),
+        0 0 26px rgba(139, 92, 255, 0.34);
+      transition: width 130ms linear;
+    }
+
+    .loader-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 10px;
+      color: #7f8aa3;
+      font-size: 0.77rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .loader-percentage {
+      color: var(--cyan);
+    }
+
+    .loader-status {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @keyframes loaderSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes loaderSpinReverse {
+      to { transform: rotate(-360deg); }
+    }
+
+    @keyframes loaderGridMove {
+      to { background-position: 0 42px, 42px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .loader-emblem::before,
+      .loader-emblem::after,
+      .loader-grid::before {
+        animation: none !important;
+      }
+    }
+
+  </style>
 </head>
+
 <body>
-<html style="font-size: 16px;" lang="en-ID"><head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="schliaz">
-    <meta name="google-site-verification" content="FwacCsCAwcIfWL1PdgauMGw4KQ5Y7apBUQwkY6KgKkw" />
-    <meta name="description" content="info@schliaz.xyz (Email For Collab)">
-    <title>Schliaz - Link in Bio & Donation</title>
-    <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="index.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 6.18.5, nicepage.com">
-    <meta property="og:title" content="Schliaz - Link in Bio & Donation">
-    <meta property="og:description" content="info@schliaz.xyz (Email For Collab)">
-    <link rel="icon" href="images/profile.png">
-    
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-    
-    
-    
-    <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": "Schliaz - Link in Bio & Donations"
-}</script>
-    <meta name="theme-color" content="#478ac9">
-    <meta property="og:type" content="website">
-  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-  <body data-home-page="Schliaz---Link-In-Bio.html" data-home-page-title="Schliaz - Link in Bio & Donations" data-path-to-root="./" data-include-products="false" class="u-body u-overlap u-overlap-transparent u-xl-mode" data-lang="en">
-    <section class="skrollable u-clearfix u-image u-parallax u-shading u-section-1" id="sec-2f8a" data-image-width="800" data-image-height="800">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <div class="u-image u-image-circle u-image-1" alt="" data-image-width="800" data-image-height="800"></div>
-        <p class="u-align-center-md u-align-center-sm u-align-center-xs u-custom-font u-text u-text-default u-text-1">schliaz</p>
-        <p class="u-text u-text-default u-text-2">info@schliaz.xyz (Email For Collab)</p>
-	</a>
-        <p class="u-align-center-md u-align-center-sm u-align-center-xs u-text u-text-default u-text-3">Give your best support here</p>
-        <a href="https://saweria.co/schliaz" class="u-border-none u-btn u-btn-round u-button-style u-custom-font u-hover-palette-4-base u-radius u-white u-btn-1">Saweria<br>
-        </a>
-      </a>
-      <p class="u-align-center-md u-align-center-sm u-align-center-xs u-text u-text-default u-text-3">My Socials</p>
-	<a href="https://www.youtube.com/callmeschliaz" class="u-border-none u-btn u-btn-round u-button-style u-custom-font u-hover-palette-4-base u-radius u-white u-btn-1">Youtube<br>
-        <a href="https://tiktok.com/@schliaz" class="u-border-none u-btn u-btn-round u-button-style u-custom-font u-hover-palette-4-base u-radius u-white u-btn-1">Tiktok</a>
-	<a href="https://www.instagram.com/schliazreal" class="u-border-none u-btn u-btn-round u-button-style u-custom-font u-hover-palette-4-base u-radius u-white u-btn-1">Instagram</a>
-	<a href="#" class="u-border-none u-btn u-btn-round u-button-style u-custom-font u-hover-palette-4-base u-radius u-white u-btn-1">Facebook</a>
-	<a href="https://www.twitch.tv/callmeschliaz" class="u-border-none u-btn u-btn-round u-button-style u-custom-font u-hover-palette-4-base u-radius u-white u-btn-1">Twitch</a>
-        <a href="https://www.bilibili.tv/en/space/1892130216" class="u-border-none u-btn u-btn-round u-button-style u-custom-font u-hover-palette-4-base u-radius u-white u-btn-1">Bilibili<br>
-        </a>
+
+  <div class="game-loader" id="gameLoader" role="status" aria-live="polite">
+    <div class="loader-grid" aria-hidden="true"></div>
+    <div class="loader-panel">
+      <div class="loader-emblem" aria-hidden="true">S</div>
+      <p class="loader-subtitle">Initializing player profile</p>
+
+      <div class="loader-track" aria-hidden="true">
+        <div class="loader-progress" id="loaderProgress"></div>
       </div>
-	</a>
-</div>
-<br><br><br>
-    </div></footer>
-  <style>.u-disable-duration * {transition-duration: 0s !important;}</style></body>
-  </body>
+
+      <div class="loader-meta">
+        <span class="loader-status" id="loaderStatus">Now Loading...</span>
+        <span class="loader-percentage" id="loaderPercentage">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ambient one" aria-hidden="true"></div>
+  <div class="ambient two" aria-hidden="true"></div>
+
+  <main class="page-shell">
+    <section class="profile-card" aria-labelledby="profile-title">
+      <div class="topbar">
+        <div class="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Online
+        </div>
+        <div class="top-tag">Player 29 // INDONESIA</div>
+      </div>
+
+      <header class="hero">
+        <div class="avatar-ring">
+          <div class="avatar">
+            <!--
+              Simpan logo milikmu dengan nama "logo.png" di folder yang sama.
+              Jika belum ada, huruf S di bawah otomatis tampil sebagai fallback.
+            -->
+            <img
+              src="logo.png"
+              alt="Logo Schliaz"
+              onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
+            />
+            <div class="avatar-fallback" hidden aria-hidden="true">S</div>
+          </div>
+        </div>
+
+        <h1 class="brand" id="profile-title" data-text="SCHLIAZ">SCHLIAZ</h1>
+        <p class="tagline">
+          What use is this?
+        </p>
+
+        <a class="email" href="mailto:info@schliaz.xyz">
+          <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24">
+            <path
+              d="M4 6h16v12H4zM4 7l8 6 8-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          thomasjohansennn@gmail.com (For Collab)
+        </a>
+      </header>
+
+      <hr class="divider" />
+
+      <section class="section" aria-labelledby="support-heading">
+        <div class="section-heading">
+          <h2 id="support-heading">Donate Here</h2>
+        </div>
+
+        <div class="links">
+          <a
+            class="game-link support"
+            href="https://saweria.co/schliaz"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 20s-7-4.3-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.7-7 10-7 10Z" />
+                <path d="m13.5 7.5-3 5h3l-2 4" />
+              </svg>
+            </span>
+            <span class="link-copy">
+              <strong>SAWERIA</strong>
+              <small>Give your best support here</small>
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="social-heading">
+        <div class="section-heading">
+          <h2 id="social-heading">My Socials</h2>
+        </div>
+
+        <div class="links">
+          <a
+            class="game-link youtube"
+            href="https://www.youtube.com/callmeschliaz"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="3.5" y="6.5" width="17" height="11" rx="3" />
+                <path class="filled" d="m10 9.4 5 2.6-5 2.6Z" />
+              </svg>
+            </span>
+            <span class="link-copy">
+              <strong>YOUTUBE</strong>
+              <small>Video, gameplay, dan highlight terbaru</small>
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a
+            class="game-link tiktok"
+            href="https://tiktok.com/@schliaz"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M14 5v9.2a4.2 4.2 0 1 1-3.2-4.1" />
+                <path d="M14 5c.7 2.4 2.3 3.7 4.7 4" />
+              </svg>
+            </span>
+            <span class="link-copy">
+              <strong>TIKTOK</strong>
+              <small>Short clips, moments, dan update cepat</small>
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a
+            class="game-link instagram"
+            href="https://www.instagram.com/schliazreal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="4" y="4" width="16" height="16" rx="5" />
+                <circle cx="12" cy="12" r="3.5" />
+                <circle class="filled" cx="17.2" cy="6.8" r="1" />
+              </svg>
+            </span>
+            <span class="link-copy">
+              <strong>INSTAGRAM</strong>
+              <small>Behind the scenes dan visual update</small>
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a
+            class="game-link facebook"
+            href="https://schliaz.my.id/#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M14 20v-7h2.7l.5-3H14V8.3c0-.9.3-1.6 1.7-1.6H18V4.1c-.4-.1-1.5-.1-2.7-.1-2.7 0-4.3 1.6-4.3 4.6V10H8v3h3v7" />
+              </svg>
+            </span>
+            <span class="link-copy">
+              <strong>FACEBOOK</strong>
+              <small>Community post dan informasi terbaru</small>
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a
+            class="game-link twitch"
+            href="https://www.twitch.tv/callmeschliaz"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 4h15v10l-4 4h-4l-2.5 2v-2H5Z" />
+                <path d="M10 8v5M15 8v5" />
+              </svg>
+            </span>
+            <span class="link-copy">
+              <strong>TWITCH</strong>
+              <small>Live stream dan sesi gaming real-time</small>
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a
+            class="game-link bilibili"
+            href="https://www.bilibili.tv/en/space/1892130216"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="4" y="7" width="16" height="12" rx="3" />
+                <path d="m9 4 3 3 3-3M8.5 12.5h.01M15.5 12.5h.01M9 16c2 .9 4 .9 6 0" />
+              </svg>
+            </span>
+            <span class="link-copy">
+              <strong>BILIBILI</strong>
+              <small>Konten dan video Schliaz di Bilibili</small>
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <footer>
+      © <span id="year"></span> SCHLIAZ
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Efek glow mengikuti pointer pada desktop.
+    window.addEventListener(
+      "pointermove",
+      (event) => {
+        const x = (event.clientX / window.innerWidth) * 100;
+        const y = (event.clientY / window.innerHeight) * 100;
+        document.body.style.setProperty("--pointer-x", `${x}%`);
+        document.body.style.setProperty("--pointer-y", `${y}%`);
+      },
+      { passive: true }
+    );
+  </script>
+<script>
+
+    // Gaming loading screen.
+    (() => {
+      const loader = document.getElementById("gameLoader");
+      const progressBar = document.getElementById("loaderProgress");
+      const percentage = document.getElementById("loaderPercentage");
+      const status = document.getElementById("loaderStatus");
+
+      if (!loader || !progressBar || !percentage || !status) return;
+
+      const messages = [
+        "Booting interface...",
+        "Loading creator profile...",
+        "Connecting social portals...",
+        "Syncing gaming assets...",
+        "System ready."
+      ];
+
+      let progress = 0;
+      const startedAt = performance.now();
+      const minimumDuration = 1700;
+      const maximumDuration = 4200;
+
+      const timer = window.setInterval(() => {
+        const increment = Math.random() * 11 + 3;
+        progress = Math.min(progress + increment, 92);
+
+        progressBar.style.width = `${progress}%`;
+        percentage.textContent = `${Math.floor(progress)}%`;
+
+        const index = Math.min(
+          Math.floor((progress / 100) * messages.length),
+          messages.length - 1
+        );
+        status.textContent = messages[index];
+      }, 140);
+
+      const finishLoading = () => {
+        const elapsed = performance.now() - startedAt;
+        const remaining = Math.max(0, minimumDuration - elapsed);
+
+        window.setTimeout(() => {
+          window.clearInterval(timer);
+          progress = 100;
+          progressBar.style.width = "100%";
+          percentage.textContent = "100%";
+          status.textContent = messages[messages.length - 1];
+
+          window.setTimeout(() => {
+            loader.classList.add("is-hidden");
+            document.body.classList.add("site-ready");
+          }, 380);
+        }, remaining);
+      };
+
+      if (document.readyState === "complete") {
+        finishLoading();
+      } else {
+        window.addEventListener("load", finishLoading, { once: true });
+      }
+
+      // Fail-safe agar loader tidak pernah menutup situs terlalu lama.
+      window.setTimeout(finishLoading, maximumDuration);
+    })();
+
+  </script>
+</body>
 </html>
